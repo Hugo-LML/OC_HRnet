@@ -1,15 +1,17 @@
 import { CustomTable } from '@hugo-lml/hr-net-table';
 import { FC } from 'react';
 import Layout from '../components/layout/Layout';
-import { EMPLOYEES } from '../constants';
+import { RootState, useAppSelector } from '../store';
 import { Employee } from '../types';
 
 const EmployeeList: FC = () => {
+  const employees = useAppSelector((state: RootState) => state.employees.list);
+
   return (
     <Layout className='pb-20'>
       <h1 className='text-2xl font-bold uppercase'>Listing Employees</h1>
       <CustomTable<Employee>
-        data={EMPLOYEES}
+        data={employees}
         columns={[
           { key: 'firstName', label: 'First Name', sortable: true },
           { key: 'lastName', label: 'Last Name', sortable: true },

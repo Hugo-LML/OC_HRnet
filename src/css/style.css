@@ -17,3 +17,7 @@
 .custom-table-filter select option {
   cursor: pointer !important;
 }
+
+.custom-table tbody tr td {
+  text-transform: capitalize;
+}

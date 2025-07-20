@@ -794,12 +794,12 @@ video {
   padding-bottom: 2rem;
 }
 
-.pt-10 {
-  padding-top: 2.5rem;
-}
-
 .pb-20 {
   padding-bottom: 5rem;
+}
+
+.pt-10 {
+  padding-top: 2.5rem;
 }
 
 .text-center {
@@ -904,6 +904,10 @@ video {
 
 .custom-table-filter select option {
   cursor: pointer !important;
+}
+
+.custom-table tbody tr td {
+  text-transform: capitalize;
 }
 
 .hover\:bg-blue-500:hover {

@@ -7,11 +7,11 @@ export type SelectOptionProps = {
 export type Employee = {
   firstName: string;
   lastName: string;
-  startDate: Date;
+  startDate: string;
   department: string;
-  dateOfBirth: Date;
+  dateOfBirth: string;
   street: string;
   city: string;
   state: string;
-  zipCode: number;
+  zipCode: string;
 }

@@ -1,11 +1,13 @@
 import '@hugo-lml/hr-net-table/dist/index.css';
+import clsx from 'clsx';
 import { ChangeEvent, FC, FormEvent, useState } from 'react';
 import Input from '../components/common/Input/Input';
 import Modal from '../components/common/Modal/Modal';
 import Select from '../components/common/Select/Select';
 import Layout from '../components/layout/Layout';
 import { DEPARTMENTS, STATES } from '../constants';
-import clsx from 'clsx';
+import { useAppDispatch } from '../store';
+import { employeesActions } from '../store/employees/employeesSlice';
 
 const Home: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -21,6 +23,8 @@ const Home: FC = () => {
     state: STATES[0].value,
     zipCode: '',
   });
+
+  const dispatch = useAppDispatch();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -38,7 +42,7 @@ const Home: FC = () => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    console.log('Form submitted with values:', formData);
+    dispatch(employeesActions.addEmployee(formData));
     setIsModalOpen(true);
   };
 
@@ -53,8 +57,24 @@ const Home: FC = () => {
               <div className='grid grid-cols-2 gap-4'>
                 <Input name='firstName' label='First Name' className='w-full' required value={formData.firstName} onChange={handleChange} />
                 <Input name='lastName' label='Last Name' className='w-full' required value={formData.lastName} onChange={handleChange} />
-                <Input name='dateOfBirth' label='Date of Birth' type='date' className='w-full' required value={formData.dateOfBirth} onChange={handleChange} />
-                <Input name='startDate' label='Start Date' type='date' className='w-full' required value={formData.startDate} onChange={handleChange} />
+                <Input
+                  name='dateOfBirth'
+                  label='Date of Birth'
+                  type='date'
+                  className='w-full'
+                  required
+                  value={formData.dateOfBirth}
+                  onChange={handleChange}
+                />
+                <Input
+                  name='startDate'
+                  label='Start Date'
+                  type='date'
+                  className='w-full'
+                  required
+                  value={formData.startDate}
+                  onChange={handleChange}
+                />
                 <Select
                   label='Department'
                   options={DEPARTMENTS}
@@ -64,7 +84,10 @@ const Home: FC = () => {
               </div>
               <button
                 type='submit'
-                className={clsx('absolute bottom-0 left-0 w-full rounded-md bg-blue-500 px-4 py-2 text-center text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50', { 'hover:bg-blue-600': isFormValid })}
+                className={clsx(
+                  'absolute bottom-0 left-0 w-full rounded-md bg-blue-500 px-4 py-2 text-center text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50',
+                  { 'hover:bg-blue-600': isFormValid },
+                )}
                 disabled={!isFormValid}
               >
                 Save
@@ -75,7 +98,15 @@ const Home: FC = () => {
               <Input name='street' label='Street' className='w-full' required value={formData.street} onChange={handleChange} />
               <Input name='city' label='City' className='w-full' required value={formData.city} onChange={handleChange} />
               <Select label='State' options={STATES} value={formData.state} onChange={value => handleSelectChange(value, 'STATE')} />
-              <Input name='zipCode' label='Zip Code' type='number' className='w-full' required value={formData.zipCode} onChange={handleChange} />
+              <Input
+                name='zipCode'
+                label='Zip Code'
+                type='number'
+                className='w-full'
+                required
+                value={formData.zipCode}
+                onChange={handleChange}
+              />
             </div>
           </div>
         </form>
