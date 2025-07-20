@@ -5,24 +5,14 @@ import Input from '../components/common/Input/Input';
 import Modal from '../components/common/Modal/Modal';
 import Select from '../components/common/Select/Select';
 import Layout from '../components/layout/Layout';
-import { DEPARTMENTS, STATES } from '../constants';
+import { DEFAULT_FORM_DATA, DEPARTMENTS, STATES } from '../constants';
 import { useAppDispatch } from '../store';
 import { employeesActions } from '../store/employees/employeesSlice';
 
 const Home: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    dateOfBirth: '',
-    startDate: '',
-    department: DEPARTMENTS[0].value,
-    street: '',
-    city: '',
-    state: STATES[0].value,
-    zipCode: '',
-  });
+  const [formData, setFormData] = useState(DEFAULT_FORM_DATA);
 
   const dispatch = useAppDispatch();
 
@@ -44,6 +34,7 @@ const Home: FC = () => {
     event.preventDefault();
     dispatch(employeesActions.addEmployee(formData));
     setIsModalOpen(true);
+    setFormData(DEFAULT_FORM_DATA);
   };
 
   return (

@@ -306,6 +306,18 @@ export const DEPARTMENTS: SelectOptionProps[] = [
   { value: 'legal', name: 'Legal' },
 ];
 
+export const DEFAULT_FORM_DATA = {
+  firstName: '',
+  lastName: '',
+  dateOfBirth: '',
+  startDate: '',
+  department: DEPARTMENTS[0].value,
+  street: '',
+  city: '',
+  state: STATES[0].value,
+  zipCode: '',
+};
+
 export const EMPLOYEES: Employee[] = [
   {
     firstName: 'John',
