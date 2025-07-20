@@ -1,54 +1,19 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
 
-/* RECHARTS */
-
-.recharts-bar svg.recharts-surface, .recharts-line svg.recharts-surface, .recharts-radar svg.recharts-surface {
-  overflow: visible;
+.custom-table-wrapper {
+  margin-top: 32px !important;
+  font-family: 'poppins', sans-serif !important;
+  font-size: 14px !important;
 }
 
-/* RECHARTS BAR */
-
-.recharts-bar g.xAxis line {
-  stroke: #DEDEDE;
+.custom-table-filter select,
+.custom-table-filter input,
+.custom-table-pagination button {
+  @apply cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 !important;
 }
 
-.recharts-bar g.yAxis line {
-  opacity: 0;
+.custom-table-filter select option {
+  cursor: pointer !important;
 }
-
-.recharts-bar g.xAxis text, g.yAxis text {
-  color: #9B9EAC;
-  font-weight: 500;
-  font-size: 14px;
-}
-
-/* RECHARTS LINE */
-
-.recharts-line g.xAxis line {
-  opacity: 0;
-}
-
-.recharts-line g.xAxis text {
-  fill: #ffffff50;
-  font-weight: 500;
-  font-size: 14px;
-}
-
-/* RECHARTS RADAR */
-
-.recharts-radar g text {
-  fill: #FFF !important;
-  font-weight: 500;
-  font-size: 11px;
-  @media screen and (min-width: 1280px) {
-    font-size: 12px;
-  }
-}
-
-.recharts-radar .recharts-polar-grid-angle line {
-  opacity: 0;
-}
-
-/* RECHARTS RADIAL */

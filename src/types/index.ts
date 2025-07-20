@@ -1,0 +1,17 @@
+export type SelectOptionProps = {
+  value: string;
+  name: string;
+  [key: string]: string;
+}
+
+export type Employee = {
+  firstName: string;
+  lastName: string;
+  startDate: Date;
+  department: string;
+  dateOfBirth: Date;
+  street: string;
+  city: string;
+  state: string;
+  zipCode: number;
+}
